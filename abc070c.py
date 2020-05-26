@@ -13,7 +13,8 @@ n = int(input())
 ans = 1
 for i in range(n):
     t = int(input())
-    a = max(ans, t)
-    b = min(ans, t)
-    ans = lcm(a, b)
+    if t >= ans:
+        ans = lcm(t, ans)
+    else:
+        ans = lcm(ans, t)
 print(ans)
