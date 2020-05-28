@@ -34,7 +34,7 @@ while len(search_list):
       search_list.append(ship.land_to)
 
 # 最後の島が到達可能であるかを判定
-if reachable_islands[N - 1] <= 2:
+if reachable_islands[N - 1] == 2:
   print('POSSIBLE')
 else:
   print('IMPOSSIBLE')
