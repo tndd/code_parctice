@@ -1,7 +1,7 @@
 class Ship:
     def __init__(self, land_from, land_to):
-        self.land_from = land_from
-        self.land_to = land_to
+        self.land_from = land_from - 1
+        self.land_to = land_to - 1
 
 N, M = map(int, input().split())
 
@@ -27,8 +27,8 @@ while is_updated:
             continue
         # 全ての船についてシミュレート
         for ship in ships:
-            # 現在地の島発の船なら移動シミュレート実行
-            if island_num == ship.land_from:
+            # 現在地の島発の船かつ目標島が到達済みでなければ移動シミュレート実行
+            if island_num == ship.land_from and reachable_islands[ship.land_to] == False:
                 # 到達済の印をつける
                 reachable_islands[ship.land_to] = True
                 # 島が更新されたフラグを立てる
