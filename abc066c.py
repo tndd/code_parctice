@@ -1,9 +1,11 @@
 n = int(input())
 a = list(map(int, input().split()))
-b = []
 
-for i in range(n):
-  b.append(a.pop(0))
-  b = b[::-1]
+a_even = list(filter(lambda x: x % 2 == 0, a))
+a_odd = list(filter(lambda x: x % 2 != 0, a))
 
-print(' '.join(map(str, b)))
+ans = a_even[::-1] + a_odd
+if n % 2 != 0:
+  ans = ans[::-1]
+
+print(' '.join(map(str, ans)))
