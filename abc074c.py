@@ -10,10 +10,12 @@ max_concentration = 0
 ans_suger_water = 0
 ans_suger = 0
 
-for wa in range(31):
-  for wb in range(31):
-    for sc in range(31):
-      for sd in range(31):
+wa = wb = sc = sd = 0
+
+while wa * WATER_A <= LIMIT:
+  while wb * WATER_B <= LIMIT:
+    while sc * SUGER_C <= LIMIT:
+      while sd * SUGER_D <= LIMIT:
         water = WATER_A * wa + WATER_B * wb
         suger = SUGER_C * sc + SUGER_D * sd
         if 0 < water + suger <= LIMIT:
@@ -22,5 +24,9 @@ for wa in range(31):
             max_concentration = percent
             ans_suger_water = water + suger
             ans_suger = suger
+        sd += 1
+      sc += 1
+    wb += 1
+  wa += 1
 
 print(ans_suger_water, ans_suger)
