@@ -14,8 +14,7 @@ sides = []
 # 長い辺の順にループ
 for l in lengths:
   if length_num[l] >= 4:
-    ans = l * l
-    break
+    ans = max(ans, l * l)
   elif length_num[l] >= 2:
     sides.append(l)
   if len(sides) == 2:
