@@ -15,7 +15,7 @@ sides = []
 for l in lengths:
   if length_num[l] >= 4:
     ans = max(ans, l * l)
-  elif length_num[l] >= 2:
+  if length_num[l] >= 2:
     sides.append(l)
   if len(sides) == 2:
     ans = sides[0] * sides[1]
