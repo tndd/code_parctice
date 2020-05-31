@@ -18,7 +18,7 @@ for l in lengths:
   if length_num[l] >= 2:
     sides.append(l)
   if len(sides) == 2:
-    ans = sides[0] * sides[1]
+    ans = max(ans, sides[0] * sides[1])
     break
 
 print(ans)
