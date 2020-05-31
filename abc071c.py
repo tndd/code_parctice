@@ -13,13 +13,13 @@ sides = []
 
 # 長い辺の順にループ
 for l in lengths:
-  if len(sides) == 2:
-    ans = sides[0] * sides[1]
-    break
   if length_num[l] >= 4:
     ans = l * l
     break
-  if length_num[l] >= 2:
+  elif length_num[l] >= 2:
     sides.append(l)
+  if len(sides) == 2:
+    ans = sides[0] * sides[1]
+    break
 
 print(ans)
