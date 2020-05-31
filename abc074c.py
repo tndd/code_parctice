@@ -43,7 +43,7 @@ for water in water_set:
     # 砂糖濃度計算
     suger_precent = concentration(water, suger)
     # 砂糖濃度が最高を更新かつ限界濃度を超えていなければ答えを更新
-    if max_concentration < suger_precent <= MELT_PERCENT_LIMIT:
+    if max_concentration <= suger_precent <= MELT_PERCENT_LIMIT:
       max_concentration = suger_precent
       ans_suger_water = water + suger
       ans_suger = suger
