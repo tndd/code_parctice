@@ -1,4 +1,5 @@
 from functools import reduce
+from pprint import pprint
 
 # judge if the list contains false. 
 def is_all_true(arg):
@@ -16,18 +17,20 @@ for _ in range(M):
 reachable_counter = 0
 # simulation of whether all the islands can be reached when each line is excluded.
 for i in range(M):
-  # list excluding the current line.
-  verification_lines = lines_ft[:i] + lines_ft[i + 1:]
   # generated per simulation.
   is_reachable = [[False if i != j else True for i in range(N)] for j in range(N)]
+  # init by excluding the current lines.
+  for f, t in lines_ft[:i] + lines_ft[i + 1:]:
+    is_reachable[f - 1][t - 1] = True
+    is_reachable[t - 1][f - 1] = True
   # simulate by a list that excludes one line.
   for k in range(N):
     for i in range(N):
       for j in range(N):
         is_reachable[i][j] = is_reachable[i][j] or (is_reachable[i][k] and is_reachable[k][j])
   # verify that there is an unreachable island.
-  print(is_reachable)
-  if is_all_true(is_reachable):
+  pprint(is_reachable)
+  if not is_all_true(is_reachable):
     reachable_counter += 1
 
 print(reachable_counter)
