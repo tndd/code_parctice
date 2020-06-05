@@ -1,5 +1,4 @@
 from functools import reduce
-from pprint import pprint
 
 # judge if the list contains false. 
 def is_all_true(arg):
@@ -29,7 +28,6 @@ for i in range(M):
       for j in range(N):
         is_reachable[i][j] = is_reachable[i][j] or (is_reachable[i][k] and is_reachable[k][j])
   # verify that there is an unreachable island.
-  pprint(is_reachable)
   if not is_all_true(is_reachable):
     reachable_counter += 1
 
