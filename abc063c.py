@@ -10,6 +10,7 @@ if ans % 10 == 0:
       ans -= s
       break
   # if all the numbers in the list are multiples of 10, the ans is 0.
-  ans = 0
+  if ans == sum(S):
+    ans = 0
 
 print(ans)
