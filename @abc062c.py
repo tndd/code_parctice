@@ -28,7 +28,7 @@ else:
     ans = min(ans, S_max - S_min)
   for x in range(1, H):
     S1 = W * x
-    S2 = (H - x) * (W / 2)
+    S2 = (H - x) * (W // 2)
     S3 = (H - x) * ((W // 2) + 1)
     S_max = max(S1, S3)
     S_min = min(S1, S2)
