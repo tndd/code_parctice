@@ -19,8 +19,8 @@ else:
   # both sides are odd.
   for x in range(1, W):
     S1 = x * H
-    S2 = (W - x) * (H // 2)
-    S3 = (W - x) * ((H // 2) + 1)
+    S2 = (H // 2) * (W - x)
+    S3 = ((H // 2) + 1) * (W - x)
     # if both sides are odd, three number appear.
     # it is not clear which of the three numbers is the largest or smallest, it need to be caluculated.
     S_max = max(S1, S3)
@@ -28,8 +28,8 @@ else:
     ans = min(ans, S_max - S_min)
   for x in range(1, H):
     S1 = W * x
-    S2 = (H - x) * (W // 2)
-    S3 = (H - x) * ((W // 2) + 1)
+    S2 = (W // 2) * (H - x)
+    S3 = ((W // 2) + 1) * (H - x)
     S_max = max(S1, S3)
     S_min = min(S1, S2)
     ans = min(ans, S_max - S_min)
