@@ -15,8 +15,9 @@ if W % 2 == 0:
     S1 = W * x
     S2 = (H - x) * (W / 2)
     ans = min(ans, abs(S1 - S2))
+# both sides are odd.
 else:
-  # both sides are odd.
+  # cut side.
   for x in range(1, W):
     S1 = x * H
     S2 = (H // 2) * (W - x)
@@ -26,6 +27,7 @@ else:
     S_max = max(S1, S3)
     S_min = min(S1, S2)
     ans = min(ans, S_max - S_min)
+  # cut vertical.
   for x in range(1, H):
     S1 = W * x
     S2 = (W // 2) * (H - x)
