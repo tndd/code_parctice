@@ -9,14 +9,6 @@ for i in range(1, N):
   if previous_sum > 0 and previous_sum + A[i] >= 0:
     # the number that need to be subtracted to meet the requirements.
     require_subtraction = previous_sum + A[i] + 1
-    # the number of wastes in meeting the requirement.
-    distance_from_ideal = previous_sum - 1
-    # restration to an ideal list.
-    A[i - 1] -= distance_from_ideal
-    previous_sum -= distance_from_ideal
-    ans += distance_from_ideal
-    # adjustment for the manupilation of the previous values.
-    require_subtraction -= distance_from_ideal
     # correcting the current number.
     A[i] -= require_subtraction
     ans += require_subtraction
@@ -25,14 +17,6 @@ for i in range(1, N):
   elif previous_sum < 0 and previous_sum + A[i] <= 0:
     # the number that need to be added to meet the requirements.
     require_addition = -(previous_sum + A[i] - 1)
-    # the number of wastes in meeting the requirement.
-    distance_from_ideal = -1 - previous_sum 
-    # restration to an ideal list.
-    A[i - 1] += distance_from_ideal
-    previous_sum += distance_from_ideal
-    ans += distance_from_ideal
-    # adjustment for the manupilation of the previous values.
-    require_addition -= distance_from_ideal
     # correcting the current number.
     A[i] += require_addition
     ans += require_addition
