@@ -1,8 +1,6 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-ans_pos = ans_neg = 0
-
 def simulate_operation(tgt_list):
   answer = 0
   N = len(tgt_list)
@@ -27,18 +25,31 @@ def simulate_operation(tgt_list):
     previous_sum += tgt_list[i]
   return answer
 
+ans_list = []
 # simulate two options of starting with a positive or negative.
 # positive, the first item is 1.
+ans_pos = 0
 A_pos = A[:]
-init_cost = abs(A_pos[0] - 1)
-ans_pos += init_cost
+init_cost = A_pos[0] - 1
+ans_pos += abs(init_cost)
 A_pos[0] -= init_cost
 ans_pos += simulate_operation(A_pos)
+ans_list.append(ans_pos)
 # negative, the first item is -1.
+ans_neg = 0
 A_neg = A[:]
-init_cost = abs(A_neg[0] + 1)
-ans_neg += init_cost
+init_cost = A_neg[0] + 1
+ans_neg += abs(init_cost)
 A_neg[0] -= init_cost
 ans_neg += simulate_operation(A_neg)
+ans_list.append(ans_neg)
+# simulate straight
+ans_straight = 0
+if A[0] != 0:
+  ans_straight = simulate_operation(A)
+  ans_list.append(ans_straight)
 
-print(min(ans_pos, ans_neg))
+print(A_pos, ans_pos)
+print(A_neg, ans_neg)
+print(A, ans_straight)
+print(min(ans_list))
