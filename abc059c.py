@@ -49,7 +49,4 @@ if A[0] != 0:
   ans_straight = simulate_operation(A)
   ans_list.append(ans_straight)
 
-print(A_pos, ans_pos)
-print(A_neg, ans_neg)
-print(A, ans_straight)
 print(min(ans_list))
