@@ -23,7 +23,11 @@ for a in A:
 answer = 1
 # there is no need to count the center.
 for i in range(N // 2):
-  answer *= possibility[i]
+  if possibility[i] <= 2:
+    answer *= possibility[i]
+  else:
+    is_exist_liar = True
+    break
 
 # it is consistent to have more than two numbers in the middle.
 if is_exist_liar or N % 2 == 1 and possibility[N//2] >= 2:
