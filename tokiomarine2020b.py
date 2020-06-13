@@ -18,13 +18,15 @@ dist_from_oni = child - oni     # -4
 ofs_spd = oni_spd - child_spd   # -1
 # T = 5
 # -5 >= -4
-if dist_from_oni >= 0 and ofs_spd >= 0 or dist_from_oni >= 0 and ofs_spd <= 0:
+if dist_from_oni >= 0 and ofs_spd >= 0:
   if ofs_spd * T >= dist_from_oni:
     print('YES')
   else:
     print('NO')
-elif dist_from_oni <= 0 and ofs_spd <= 0 or dist_from_oni <= 0 and ofs_spd >= 0:
+elif dist_from_oni <= 0 and ofs_spd <= 0:
   if ofs_spd * T <= dist_from_oni:
     print('YES')
   else:
     print('NO')
+else:
+  print('NO')
