@@ -2,10 +2,27 @@ oni, oni_spd = list(map(int, input().split()))
 child, child_spd = list(map(int, input().split()))
 T = int(input())
 
-dist = child - oni
-ofs_spd = oni_spd - child_spd
+# 4
+# -1
+# T = 5
+# -5 >= 4 false ng
 
-if ofs_spd * T >= dist:
-  print('YES')
+# -4
+# 1
+# T = 5
+# 5 >= -4 false ok
+
+dist_from_oni = child - oni     # -4
+ofs_spd = oni_spd - child_spd   # -1
+# T = 5
+# -5 >= -4
+if dist_from_oni >= 0 and ofs_spd >= 0 or dist_from_oni <= 0 and ofs_spd >= 0:
+  if ofs_spd * T >= dist_from_oni:
+    print('YES')
+  else:
+    print('NO')
 else:
-  print('NO')
+  if ofs_spd * T <= dist_from_oni:
+    print('YES')
+  else:
+    print('NO')
