@@ -33,4 +33,4 @@ for i in range(N // 2):
 if is_exist_liar or N % 2 == 1 and possibility[N//2] >= 2:
   print(0)
 else:
-  print(answer)
+  print(answer % THE_NUM)
