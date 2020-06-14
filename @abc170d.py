@@ -11,7 +11,12 @@ for i in range(N):
   if is_divide == False:
     ans += 1
 
+# same number pattern.
 if A[0] in A[1:]:
+  ans -= 1
+
+# single number pattern.
+if N == 1:
   ans -= 1
 
 print(ans)
