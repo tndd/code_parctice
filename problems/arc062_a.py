@@ -9,9 +9,9 @@ for _ in range(N):
     T.append(t)
     A.append(a)
 
-t_num = 1
-a_num = 1
-for i in range(N):
+t_num = T[0]
+a_num = A[0]
+for i in range(1, N):
     tn = ceil(t_num / T[i])
     an = ceil(a_num / A[i])
     n = max(tn, an)
