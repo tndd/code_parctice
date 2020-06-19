@@ -12,8 +12,8 @@ for _ in range(N):
 t_num = T[0]
 a_num = A[0]
 for i in range(1, N):
-    tn = ceil(t_num / T[i])
-    an = ceil(a_num / A[i])
+    tn = (t_num + T[i] - 1) // T[i]
+    an = (a_num + A[i] - 1) // A[i]
     n = max(tn, an)
     t_num = T[i] * n
     a_num = A[i] * n
