@@ -3,16 +3,12 @@ from collections import Counter
 S = input()
 T = input()
 
-alps_counter_s = Counter()
-alps_counter_t = Counter()
+alps_counter_s = Counter(S).most_common()
+alps_counter_t = Counter(T).most_common()
 
-for s in S:
-  alps_counter_s[s] += 1
-
-for t in T:
-  alps_counter_t[t] += 1
-
-if len(alps_counter_s.values()) == len(alps_counter_t.values()):
-  print('Yes')
+for s, t in zip(alps_counter_s, alps_counter_t):
+    if s[1] != t[1]:
+        print("No")
+        break
 else:
-  print('No')
+    print("Yes")
