@@ -3,12 +3,21 @@ from collections import Counter
 S = input()
 T = input()
 
-alps_counter_s = Counter(S).most_common()
-alps_counter_t = Counter(T).most_common()
+st = {}
+ts = {}
 
-for s, t in zip(alps_counter_s, alps_counter_t):
-    if s[1] != t[1]:
-        print("No")
-        break
+for s, t in zip(S, T):
+  if s not in st:
+    st[s] = t
+  else:
+    if st[s] != t:
+      print('No')
+      break
+  if t not in ts:
+    ts[t] = s
+  else:
+    if ts[t] != s:
+      print('No')
+      break
 else:
-    print("Yes")
+  print('Yes')
