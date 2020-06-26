@@ -1,16 +1,18 @@
 N = int(input())
 A = sorted(list(map(int, input().split())))
+THE_NUM = 10**6 + 1
 
-dp = [False] * (10**6 + 1)
+dp = [True] * (THE_NUM)
 
-for i in range(2, 10**6 + 1):
-  for j in range(i + 1, 10**6 + 1):
-    if dp[j] == False and j % i == 0:
-      dp[j] = True
+for i in range(2, THE_NUM):
+  for j in range(i * 2, THE_NUM, i):
+    dp[j] = False
 
-anss = [i + 1 for i, x in enumerate(A[2:]) if dp[x] == False]
+print(dp)
 
-print(anss)
+# anss = [i + 1 for i, x in enumerate(A[2:]) if dp[x] == False]
+
+# print(anss)
 
 # ans = 0
 # for i in range(N):
