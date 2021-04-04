@@ -1,6 +1,9 @@
 N = int(input())
 a = [int(input()) for _ in range(N)]
 
-_a = list(set(sorted(a)))
+d = {}
+for i, n in enumerate(sorted(set(a))):
+    d[n] = i
+
 for n in a:
-    print(_a.index(n))
+    print(d[n])
