@@ -1,32 +1,32 @@
+from collections import deque
+import numpy as np
+
 H, W = list(map(int, input().split()))
 S = []
 for i in range(H):
     S.append(list(input()))
 
-def gen_dp(y, x):
-    dp = [[float('inf') for _ in range(W)] for _ in range(H)]
-    dp[y][x] = 0
-    return dp
+ans = 0
 
-def dist_dp(y, x, dp):
-    if (not (0 <= y < H) or not (0 <= x < W)):
-        return
-    if (S[y + 1][x] == '.'):
-        dp[y + 1][x] = min(dp[y][x] + 1, dp[y + 1][x])
-        dist_dp(y + 1, x, dp)
-    if (S[y][x + 1] == '.'):
-        dp[y][x + 1] = min(dp[y][x] + 1, dp[y][x + 1])
-        dist_dp(y, x + 1, dp)
-    if (S[y - 1][x] == '.'):
-        dp[y - 1][x] = min(dp[y][x] + 1, dp[y - 1][x])
-        dist_dp(y - 1, x, dp)
-    if (S[y][x - 1] == '.'):
-        dp[y][x - 1] = min(dp[y][x] + 1, dp[y][x - 1])
-        dist_dp(y, x - 1, dp)
-
-
-from pprint import pprint
 for y in range(H):
     for x in range(W):
-        dp = gen_dp(y, x)
-        pprint(dist_dp(y, x, dp))
+        # distance from the starting point.
+        dist = [[0] * W for _ in range(H)]
+        # the queue of the next point to be searched.
+        queue = deque([(y, x)])
+        while queue:
+            now_y, now_x = queue.popleft()
+            for i, j in ((1, 0), (0, 1), (-1, 0), (0, -1)):
+                next_y, next_x = now_y + i, now_x + j
+                # if next yx is outrange, continue.
+                if next_y < 0 or H <= next_y or next_x < 0 or W <= next_x:
+                    continue
+                # overwrite deistane if the point is unexplored location.
+                if S[next_y][next_x] != '#' and dist[next_y][next_x] == 0:
+                    dist[next_y][next_x] = dist[now_y][now_x] + 1
+                    # add the next search point to queue.
+                    queue.append((next_y, next_x))
+        dist[y][x] = 0
+        # find the maximum distance.
+        ans = max(ans, np.max(dist))
+print(ans)
