@@ -1,15 +1,16 @@
 from collections import deque
 import numpy as np
 
-H, W = list(map(int, input().split()))
-S = []
-for i in range(H):
-    S.append(list(input()))
+H, W = map(int, input().split())
+S = [list(input()) for _ in range(H)]
 
 ans = 0
 
 for y in range(H):
     for x in range(W):
+        # skip if the starting point is the wall.
+        if S[y][x] == "#":
+            continue
         # distance from the starting point.
         dist = [[0] * W for _ in range(H)]
         # the queue of the next point to be searched.
@@ -29,4 +30,5 @@ for y in range(H):
         dist[y][x] = 0
         # find the maximum distance.
         ans = max(ans, np.max(dist))
+
 print(ans)
