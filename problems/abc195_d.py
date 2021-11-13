@@ -14,15 +14,16 @@ for i in range(Q):
 # sort the package in descending order of value.
 pkgs = sorted(pkgs, key=lambda x: x['v'], reverse=True)
 # sort the boxes in descending order of capacity.
-boxes = sorted(boxes, reverse=True)
 for i in range(Q):
     value = 0
     pkgs_per_q = pkgs[:]
     # removing the boxes between l and r
     boxes_lr = boxes[:l[i]-1] + boxes[r[i]:]
+    boxes_lr = sorted(boxes_lr)
     for box_vol in boxes_lr:
         for i, pkg in enumerate(pkgs_per_q):
             if pkg['w'] <= box_vol:
                 value += pkg['v']
                 pkgs_per_q.pop(i)
+                break
     print(value)
