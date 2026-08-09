@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - chatgpt/workspace-bridge-probe
+  pull_request:
+    branches:
+      - master
 
 jobs:
   pack-browser:
@@ -26,5 +29,3 @@ jobs:
           name: playwright-headless-shell-1.57.0
           path: pw-browsers
           retention-days: 1
-
-# second push intentionally triggers the registered workflow
