@@ -1,0 +1,28 @@
+name: chatgpt-playwright-browser-bridge-probe
+
+on:
+  push:
+    branches:
+      - chatgpt/workspace-bridge-probe
+
+jobs:
+  pack-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install Playwright package
+        run: python -m pip install playwright==1.57.0
+      - name: Download Playwright Chromium headless shell only
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
+        run: python -m playwright install --only-shell chromium
+      - name: Show payload
+        run: du -sh pw-browsers && find pw-browsers -maxdepth 3 -type f | head -40
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playwright-headless-shell-1.57.0
+          path: pw-browsers
+          retention-days: 1
