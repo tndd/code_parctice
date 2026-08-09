@@ -26,3 +26,5 @@ jobs:
           name: playwright-headless-shell-1.57.0
           path: pw-browsers
           retention-days: 1
+
+# second push intentionally triggers the registered workflow
